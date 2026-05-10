@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>常用命令手册 | 小轩的技术博客</title><meta name="author" content="小轩"><meta name="copyright" content="小轩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="博客项目常用命令手册本文档记录了博客项目日常使用的各种命令，方便快速查阅。  📦 Hexo 基础命令服务器相关12345678910# 启动本地开发服务器（默认端口 4000）npx hexo server# 或简写npx hexo s# 指定端口启动npx hexo s -p 5000# 指定 IP 地址启动npx hexo s -i 192.168.1.100  生成与部署123456789">
+<meta property="og:type" content="website">
+<meta property="og:title" content="常用命令手册">
+<meta property="og:url" content="https://xuan-blog.vercel.app/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="小轩的技术博客">
+<meta property="og:description" content="博客项目常用命令手册本文档记录了博客项目日常使用的各种命令，方便快速查阅。  📦 Hexo 基础命令服务器相关12345678910# 启动本地开发服务器（默认端口 4000）npx hexo server# 或简写npx hexo s# 指定端口启动npx hexo s -p 5000# 指定 IP 地址启动npx hexo s -i 192.168.1.100  生成与部署123456789">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xuan-blog.vercel.app/img/avatar.png">
+<meta property="article:published_time" content="2026-05-10T12:48:00.000Z">
+<meta property="article:modified_time" content="2026-05-10T13:08:38.729Z">
+<meta property="article:author" content="小轩">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="编程教程">
+<meta property="article:tag" content="开发效率">
+<meta property="article:tag" content="技术笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xuan-blog.vercel.app/img/avatar.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xuan-blog.vercel.app/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '常用命令手册',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小轩的技术博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">常用命令手册</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="博客项目常用命令手册"><a href="#博客项目常用命令手册" class="headerlink" title="博客项目常用命令手册"></a>博客项目常用命令手册</h1><p>本文档记录了博客项目日常使用的各种命令，方便快速查阅。</p>
+<hr>
+<h2 id="📦-Hexo-基础命令"><a href="#📦-Hexo-基础命令" class="headerlink" title="📦 Hexo 基础命令"></a>📦 Hexo 基础命令</h2><h3 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动本地开发服务器（默认端口 4000）</span></span><br><span class="line">npx hexo server</span><br><span class="line"><span class="comment"># 或简写</span></span><br><span class="line">npx hexo s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口启动</span></span><br><span class="line">npx hexo s -p 5000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定 IP 地址启动</span></span><br><span class="line">npx hexo s -i 192.168.1.100</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成与部署"><a href="#生成与部署" class="headerlink" title="生成与部署"></a>生成与部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理缓存和生成的静态文件</span></span><br><span class="line">npx hexo clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">npx hexo generate</span><br><span class="line"><span class="comment"># 或简写</span></span><br><span class="line">npx hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署到远程仓库</span></span><br><span class="line">npx hexo deploy</span><br><span class="line"><span class="comment"># 或简写</span></span><br><span class="line">npx hexo d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一键清理、生成、部署</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<h3 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建新文章</span></span><br><span class="line">npx hexo new <span class="string">&quot;文章标题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新页面</span></span><br><span class="line">npx hexo new page <span class="string">&quot;页面名称&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建草稿</span></span><br><span class="line">npx hexo new draft <span class="string">&quot;草稿标题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布草稿</span></span><br><span class="line">npx hexo publish <span class="string">&quot;草稿标题&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔧-Git-常用命令"><a href="#🔧-Git-常用命令" class="headerlink" title="🔧 Git 常用命令"></a>🔧 Git 常用命令</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有变更到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加指定文件</span></span><br><span class="line">git add 文件名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交变更</span></span><br><span class="line">git commit -m <span class="string">&quot;提交信息&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取远程更新</span></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看与对比"><a href="#查看与对比" class="headerlink" title="查看与对比"></a>查看与对比</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看提交历史</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看简洁的提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看最近的 5 条提交</span></span><br><span class="line">git <span class="built_in">log</span> -5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看变更内容</span></span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看暂存区的变更</span></span><br><span class="line">git diff --staged</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新分支</span></span><br><span class="line">git branch 分支名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout 分支名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建并切换分支</span></span><br><span class="line">git checkout -b 分支名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d 分支名</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看远程仓库地址</span></span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加远程仓库</span></span><br><span class="line">git remote add origin 仓库地址</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改远程仓库地址</span></span><br><span class="line">git remote set-url origin 新地址</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看本地分支与远程分支的关联</span></span><br><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🌐-网络与代理配置"><a href="#🌐-网络与代理配置" class="headerlink" title="🌐 网络与代理配置"></a>🌐 网络与代理配置</h2><h3 id="Git-代理设置"><a href="#Git-代理设置" class="headerlink" title="Git 代理设置"></a>Git 代理设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置 HTTP 代理</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 HTTPS 代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 HTTP 代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 HTTPS 代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前代理配置</span></span><br><span class="line">git config --global --get http.proxy</span><br><span class="line">git config --global --get https.proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSL-证书验证"><a href="#SSL-证书验证" class="headerlink" title="SSL 证书验证"></a>SSL 证书验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用 SSL 证书验证（临时解决连接问题）</span></span><br><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复 SSL 证书验证</span></span><br><span class="line">git config --global http.sslVerify <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔍-问题排查命令"><a href="#🔍-问题排查命令" class="headerlink" title="🔍 问题排查命令"></a>🔍 问题排查命令</h2><h3 id="端口占用检查"><a href="#端口占用检查" class="headerlink" title="端口占用检查"></a>端口占用检查</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看端口占用（Windows）</span></span><br><span class="line">netstat -ano | findstr :4000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制终止占用端口的进程（PID 替换为实际进程号）</span></span><br><span class="line">taskkill /F /PID 12345</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git-连接测试"><a href="#Git-连接测试" class="headerlink" title="Git 连接测试"></a>Git 连接测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试 GitHub SSH 连接</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试 HTTPS 连接</span></span><br><span class="line">git ls-remote https://github.com/用户名/仓库名.git</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📁-文件系统操作"><a href="#📁-文件系统操作" class="headerlink" title="📁 文件系统操作"></a>📁 文件系统操作</h2><h3 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看文件内容（Windows PowerShell）</span></span><br><span class="line"><span class="built_in">cat</span> 文件名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看文件前 10 行</span></span><br><span class="line"><span class="built_in">head</span> -n 10 文件名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看文件后 10 行</span></span><br><span class="line"><span class="built_in">tail</span> -n 10 文件名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计文件行数</span></span><br><span class="line"><span class="built_in">wc</span> -l 文件名</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出当前目录内容</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="built_in">dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出详细信息</span></span><br><span class="line"><span class="built_in">ls</span> -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出隐藏文件</span></span><br><span class="line"><span class="built_in">ls</span> -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> 目录路径</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回上级目录</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="️-npm-相关命令"><a href="#️-npm-相关命令" class="headerlink" title="️ npm 相关命令"></a>️ npm 相关命令</h2><h3 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 或简写</span></span><br><span class="line">npm i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装指定包</span></span><br><span class="line">npm install 包名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载包</span></span><br><span class="line">npm uninstall 包名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新包</span></span><br><span class="line">npm update 包名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装全局包</span></span><br><span class="line">npm install -g 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="项目脚本"><a href="#项目脚本" class="headerlink" title="项目脚本"></a>项目脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行 build 脚本</span></span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行 server 脚本</span></span><br><span class="line">npm run server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行 clean 脚本</span></span><br><span class="line">npm run clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行 deploy 脚本</span></span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="缓存管理"><a href="#缓存管理" class="headerlink" title="缓存管理"></a>缓存管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理 npm 缓存</span></span><br><span class="line">npm cache clean --force</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 npm 缓存</span></span><br><span class="line">npm cache <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔐-SSH-密钥管理"><a href="#🔐-SSH-密钥管理" class="headerlink" title="🔐 SSH 密钥管理"></a>🔐 SSH 密钥管理</h2><h3 id="生成与配置"><a href="#生成与配置" class="headerlink" title="生成与配置"></a>生成与配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成 SSH 密钥（默认 RSA）</span></span><br><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成 ED25519 密钥（推荐）</span></span><br><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_ed25519.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加 SSH 密钥到 ssh-agent</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试 GitHub SSH 连接</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试 GitLab SSH 连接</span></span><br><span class="line">ssh -T git@gitlab.com</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📝-Markdown-快捷语法"><a href="#📝-Markdown-快捷语法" class="headerlink" title="📝 Markdown 快捷语法"></a>📝 Markdown 快捷语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文本格式"><a href="#文本格式" class="headerlink" title="文本格式"></a>文本格式</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line">~~删除线~~</span><br><span class="line"><span class="code">`行内代码`</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 无序列表项 1</span><br><span class="line"><span class="bullet">-</span> 无序列表项 2</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 有序列表项 1</span><br><span class="line"><span class="bullet">2.</span> 有序列表项 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">链接文字</span>](<span class="link">https://example.com</span>)</span><br><span class="line">![<span class="string">图片描述</span>](<span class="link">图片路径</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```javascript</span></span><br><span class="line"><span class="code">const code = &quot;示例代码&quot;;</span></span><br><span class="line"><span class="code">console.log(code);</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 列1 | 列2 | 列3 |</span><br><span class="line">|-----|-----|-----|</span><br><span class="line">| 内容1 | 内容2 | 内容3 |</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="快速部署流程"><a href="#快速部署流程" class="headerlink" title="快速部署流程"></a>快速部署流程</h2><h3 id="完整部署步骤"><a href="#完整部署步骤" class="headerlink" title="完整部署步骤"></a>完整部署步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 清理缓存</span></span><br><span class="line">npx hexo clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 生成静态文件</span></span><br><span class="line">npx hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 部署到远程</span></span><br><span class="line">npx hexo deploy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者一键完成</span></span><br><span class="line">npx hexo clean &amp;&amp; npx hexo generate &amp;&amp; npx hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动本地服务器</span></span><br><span class="line">npx hexo server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问地址</span></span><br><span class="line">http://localhost:4000</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常见问题命令"><a href="#常见问题命令" class="headerlink" title="常见问题命令"></a>常见问题命令</h2><h3 id="端口被占用"><a href="#端口被占用" class="headerlink" title="端口被占用"></a>端口被占用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 查找占用端口的进程</span></span><br><span class="line">netstat -ano | findstr :4000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 终止进程（替换 PID）</span></span><br><span class="line">taskkill /F /PID &lt;进程号&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 重新启动服务器</span></span><br><span class="line">npx hexo server</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git-推送失败"><a href="#Git-推送失败" class="headerlink" title="Git 推送失败"></a>Git 推送失败</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 检查网络连接</span></span><br><span class="line">ping github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 查看远程仓库配置</span></span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 尝试重新推送</span></span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 如果还是失败，尝试拉取最新代码</span></span><br><span class="line">git pull --rebase</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSL-连接问题"><a href="#SSL-连接问题" class="headerlink" title="SSL 连接问题"></a>SSL 连接问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时禁用 SSL 验证</span></span><br><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 完成部署后恢复</span></span><br><span class="line">git config --global http.sslVerify <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-实用技巧"><a href="#💡-实用技巧" class="headerlink" title="💡 实用技巧"></a>💡 实用技巧</h2><h3 id="Git-别名配置"><a href="#Git-别名配置" class="headerlink" title="Git 别名配置"></a>Git 别名配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置常用别名</span></span><br><span class="line">git config --global alias.st status</span><br><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.ci commit</span><br><span class="line">git config --global alias.lg <span class="string">&quot;log --oneline --graph --all&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Hexo-配置检查"><a href="#Hexo-配置检查" class="headerlink" title="Hexo 配置检查"></a>Hexo 配置检查</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证配置文件</span></span><br><span class="line">npx hexo config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看特定配置项</span></span><br><span class="line">npx hexo config title</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📚-参考资源"><a href="#📚-参考资源" class="headerlink" title="📚 参考资源"></a>📚 参考资源</h2><ul>
+<li><strong>Hexo 官方文档</strong>: <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li><strong>Git 官方文档</strong>: <a target="_blank" rel="noopener" href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
+<li><strong>Markdown 语法</strong>: <a target="_blank" rel="noopener" href="https://www.markdownguide.org/">https://www.markdownguide.org/</a></li>
+<li><strong>GitHub 帮助</strong>: <a target="_blank" rel="noopener" href="https://docs.github.com/">https://docs.github.com/</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>💡 <strong>提示</strong>: 本手册会随着项目发展持续更新，欢迎补充更多实用命令！</p>
+</blockquote>
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">小轩</div><div class="author-info-description">专注 AI 工具、开发教程、软件配置、编程技巧分享</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！✨ 这里分享技术笔记与工具教程。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/10/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BD%9C%E9%83%A8%E7%BD%B2Vercel-GitHub-Pages-%E7%95%99%E8%A8%80%E6%9D%BF-SEO%E4%BC%98%E5%8C%96%EF%BC%88%E6%96%B0%E6%89%8B%E4%BF%9D%E5%A7%86%E7%BA%A7%EF%BC%89/" title="从零搭建Hexo博客全流程｜部署Vercel+GitHub Pages+留言板+SEO优化（新手保姆级）"><img src="/img/hexo-blog-cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零搭建Hexo博客全流程｜部署Vercel+GitHub Pages+留言板+SEO优化（新手保姆级）"/></a><div class="content"><a class="title" href="/2026/05/10/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BD%9C%E9%83%A8%E7%BD%B2Vercel-GitHub-Pages-%E7%95%99%E8%A8%80%E6%9D%BF-SEO%E4%BC%98%E5%8C%96%EF%BC%88%E6%96%B0%E6%89%8B%E4%BF%9D%E5%A7%86%E7%BA%A7%EF%BC%89/" title="从零搭建Hexo博客全流程｜部署Vercel+GitHub Pages+留言板+SEO优化（新手保姆级）">从零搭建Hexo博客全流程｜部署Vercel+GitHub Pages+留言板+SEO优化（新手保姆级）</a><time datetime="2026-05-10T13:06:11.000Z" title="发表于 2026-05-10 21:06:11">2026-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/10/Visio-2024-%E4%B8%93%E4%B8%9A%E7%89%88%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E4%B8%8E%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" title="Visio 2024 专业版详细安装与激活教程">Visio 2024 专业版详细安装与激活教程</a><time datetime="2026-05-10T12:11:24.000Z" title="发表于 2026-05-10 20:11:24">2026-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/10/Claude-Code-%E5%85%8D%E8%B4%B9%E6%8E%A5%E5%85%A5-NVIDIA-NIM-%E5%9B%BD%E4%BA%A7%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B%EF%BC%88%E9%9B%B6%E6%88%90%E6%9C%AC%E5%8F%AF%E7%94%A8%EF%BC%89/" title="Claude Code 免费接入 NVIDIA NIM 国产大模型完整教程（零成本可用）">Claude Code 免费接入 NVIDIA NIM 国产大模型完整教程（零成本可用）</a><time datetime="2026-05-10T09:50:51.000Z" title="发表于 2026-05-10 17:50:51">2026-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/10/Windows-%E7%B3%BB%E7%BB%9F-MinIO-%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E5%AE%A2%E6%88%B7%E7%AB%AF-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF-%E5%B8%B8%E8%A7%81%E5%9D%91%EF%BC%89/" title="Windows 系统 MinIO 完整安装部署详细教程（服务端+客户端+开机自启+常见坑）">Windows 系统 MinIO 完整安装部署详细教程（服务端+客户端+开机自启+常见坑）</a><time datetime="2026-05-10T09:33:42.000Z" title="发表于 2026-05-10 17:33:42">2026-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/10/Navicat-for-MySQL-%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B%E9%99%84%E5%AE%89%E8%A3%85%E5%8C%85%EF%BC%88Windows-64%E4%BD%8D%EF%BC%8C%E6%96%B0%E6%89%8B%E5%8F%8B%E5%A5%BD%EF%BC%89/" title="Navicat for MySQL 完整安装与连接教程附安装包（Windows 64位，新手友好）">Navicat for MySQL 完整安装与连接教程附安装包（Windows 64位，新手友好）</a><time datetime="2026-05-10T09:21:00.000Z" title="发表于 2026-05-10 17:21:00">2026-05-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">AI工具</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">工具教程</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">技术教程</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">软件教程</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BF%90%E7%BB%B4%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">运维教程</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CC-Switch/" style="font-size: 1.1em; color: #999">CC-Switch</a> <a href="/tags/AI%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">AI编程工具</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/" style="font-size: 1.1em; color: #999">对象存储</a> <a href="/tags/%E5%9B%BD%E4%BA%A7%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.1em; color: #999">国产大模型</a> <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" style="font-size: 1.1em; color: #999">反向代理</a> <a href="/tags/%E5%9B%BE%E8%A1%A8%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">图表工具</a> <a href="/tags/CLIProxyAPI/" style="font-size: 1.1em; color: #999">CLIProxyAPI</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">博客搭建</a> <a href="/tags/%E9%83%A8%E7%BD%B2/" style="font-size: 1.1em; color: #999">部署</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" style="font-size: 1.1em; color: #999">环境部署</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">服务器工具</a> <a href="/tags/%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">全平台工具</a> <a href="/tags/GitHub-Pages/" style="font-size: 1.1em; color: #999">GitHub Pages</a> <a href="/tags/Ubuntu/" style="font-size: 1.1em; color: #999">Ubuntu</a> <a href="/tags/MATLAB/" style="font-size: 1.1em; color: #999">MATLAB</a> <a href="/tags/%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">截图工具</a> <a href="/tags/%E7%A7%91%E7%A0%94%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">科研工具</a> <a href="/tags/Windows%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">Windows工具</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%BF%80%E6%B4%BB/" style="font-size: 1.1em; color: #999">软件激活</a> <a href="/tags/Windows/" style="font-size: 1.1em; color: #999">Windows</a> <a href="/tags/Microsoft-Office/" style="font-size: 1.1em; color: #999">Microsoft Office</a> <a href="/tags/Navicat/" style="font-size: 1.3em; color: #99a1ac">Navicat</a> <a href="/tags/PHP8-2/" style="font-size: 1.1em; color: #999">PHP8.2</a> <a href="/tags/WSL/" style="font-size: 1.1em; color: #999">WSL</a> <a href="/tags/Hexo/" style="font-size: 1.1em; color: #999">Hexo</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.5em; color: #99a9bf">教程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B7%A5%E5%85%B7/" style="font-size: 1.3em; color: #99a1ac">数据库工具</a> <a href="/tags/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/" style="font-size: 1.1em; color: #999">远程连接</a> <a href="/tags/Snipaste/" style="font-size: 1.1em; color: #999">Snipaste</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/AI%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">AI编程</a> <a href="/tags/Claude-Code/" style="font-size: 1.1em; color: #999">Claude Code</a> <a href="/tags/%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8/" style="font-size: 1.1em; color: #999">效率神器</a> <a href="/tags/MinIO/" style="font-size: 1.1em; color: #999">MinIO</a> <a href="/tags/SEO%E4%BC%98%E5%8C%96/" style="font-size: 1.1em; color: #999">SEO优化</a> <a href="/tags/XShell8/" style="font-size: 1.1em; color: #999">XShell8</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" style="font-size: 1.1em; color: #999">软件安装教程</a> <a href="/tags/Nginx/" style="font-size: 1.1em; color: #999">Nginx</a> <a href="/tags/Vercel/" style="font-size: 1.1em; color: #999">Vercel</a> <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 1.1em; color: #999">人工智能</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">12</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">12</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-10T13:18:27.488Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 小轩</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'xuanbin/xuan-blog',
+      'data-repo-id': 'R_kgDOSYzXJA',
+      'data-category-id': 'DIC_kwDOSYzXJM4C8s2C',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
